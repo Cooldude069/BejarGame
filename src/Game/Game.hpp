@@ -13,7 +13,7 @@ public:
             std::cout << container[i] << std::endl;
         }
     }
-    char take_input();     // Will take input from user.
+    int take_input();     // Will take input from user.
     char process_input();  // Will process the input.
     int *possible_moves(); // Give return an array of the number of threats.
     /*
@@ -27,3 +27,12 @@ public:
     Game start();       // Will start the event loop.
     Game event_loop();  // Will manage the running of the game.
 };
+char Game::process_input()
+{
+    int inp=take_input();
+    if (container[inp]=='X'||container[inp]=='O')
+    {
+        cout<<"Enter valid num\n";
+    }
+    else container[inp]='X';    
+}
