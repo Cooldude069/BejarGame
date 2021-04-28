@@ -20,7 +20,7 @@ public:
             this->container[i] = container[i];
     }
     int take_input();      // Will take input from user.
-    Game process_input();  // Will process the input.
+    Game &process_input();  // Will process the input.
     int *possible_moves(); // Give return an array of the number of threats.
     /*
     Eg.
@@ -33,7 +33,7 @@ public:
     Game start();       // Will start the event loop.
     Game event_loop();  // Will manage the running of the game.
 };
-Game Game::process_input()
+Game &Game::process_input()
 {
     int inp = take_input();
     if (container[inp] == 'X' || container[inp] == 'O')
