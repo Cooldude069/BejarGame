@@ -2,6 +2,7 @@
 #include "src/Game/Game.hpp"
 #include "src/Game/take_input.hpp"
 #include "src/Game/possible_moves.hpp"
+#include "src/Game/best_move.hpp"
 using namespace std;
 
 int main()
