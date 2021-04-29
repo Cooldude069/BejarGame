@@ -6,20 +6,20 @@ int *Game::possible_moves()
     movement = new int[9];
     for (int i = 0; i < 9; i++)
     {
-        if (container[i] == 'X' || container[i] == 'O')
-            movement[i] = -1;
-        else
-            movement[i] = 0;
+        movement[i] = (container[i] == 'X' || container[i] == 'O') ? -1 : 0;
     }
     for (int i = 0; i < 9; i++)
     {
+    	if (i <= 2)
+    	{
+    	    if (container[i] == 'X' && container[i+6] == 'X')
+    	    {
+    	    	if(container[i+3] == (char)NULL)
+    	    	    movement[i+3] += 1;
+    	    }
+    	}
         if (i < 6)
         {
-            if (container[0] == 'X' && container[6] == 'X')
-            {
-                if (container[3] == (char)NULL)
-                    movement[3] += 1;
-            }
             if (container[i] == 'X' && container[i + 3] == 'X')
             {
                 if (i <= 2)
@@ -45,7 +45,7 @@ int *Game::possible_moves()
                 }
                 else if (i % 3 == 1)
                     if (i > 0)
-                        if (container[i - 1] != 'O')
+                        if (container[i - 1] == (char)NULL)
                             movement[i - 1] += 1;
             }
         }
@@ -53,7 +53,7 @@ int *Game::possible_moves()
         {
             if (container[i] == 'X' && container[i - 2] == 'X')
             {
-                if (container[i - 1] != 'O')
+                if (container[i - 1] == (char)NULL)
                     movement[i - 1] += 1;
             }
         }
