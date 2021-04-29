@@ -38,7 +38,7 @@ Game &Game::process_input()
     int inp = take_input();
     if (container[inp] == 'X' || container[inp] == 'O')
     {
-        std::cout << "Enter valid num\n";
+        std::cout<<"Enter valid num\n";
     }
     else
         container[inp] = 'X';
