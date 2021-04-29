@@ -20,7 +20,7 @@ public:
             this->container[i] = container[i];
     }
     int take_input();      // Will take input from user.
-    Game process_input();  // Will process the input.
+    Game &process_input(); // Will process the input.
     int *possible_moves(); // Give return an array of the number of threats.
     /*
     Eg.
@@ -28,12 +28,12 @@ public:
     |O|X| | there will be 1. But if u see, some positions are already occupied
     |X| | | at those positions the value will be -1.
     */
-    int best_move();    // using the data from possible_moves, we will calculate the best move.
-    bool is_finished(); // Will check if the game is finished or not.
-    Game start();       // Will start the event loop.
-    Game event_loop();  // Will manage the running of the game.
+    int best_move();   // using the data from possible_moves, we will calculate the best move.
+    int is_finished(); // Will check if the game is finished or not.
+    Game start();      // Will start the event loop.
+    Game event_loop(); // Will manage the running of the game.
 };
-Game Game::process_input()
+Game &Game::process_input()
 {
     int inp = take_input();
     if (container[inp] == 'X' || container[inp] == 'O')

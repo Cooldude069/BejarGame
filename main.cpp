@@ -10,15 +10,12 @@ int main()
     cont = new char[9];
     /*
     | | |X|
-    |X| |O|
-    |X|O|O|
+    | |O| |
+    | | |X|
     */
     cont[2] = 'X';
-    cont[3] = 'X';
-    cont[5] = 'O';
-    cont[6] = 'X';
-    cont[7] = 'O';
-    cont[8] = 'O';
+    cont[4] = 'O';
+    cont[8] = 'X';
     Game g(cont);
     auto pm = g.possible_moves();
     for (int i = 0; i < 9; i++)
