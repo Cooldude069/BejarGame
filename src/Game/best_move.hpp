@@ -5,7 +5,7 @@ int Game::best_move()
     auto pm=possible_moves();
     for (int i = 0; i < 9; i++)
     {
-        if (pm[i]=1)
+        if (pm[i]==1)
         {
             single_threat[j++]=i;
             flag=true;
@@ -17,17 +17,30 @@ int Game::best_move()
         }
     }
     if (flag==false)
-    {        
+    {
+        char str[9];
+        memmove(str,container,sizeof(container));
         for (int i = 0; i < 8; i++)
         {
-            char str[9];
-            memmove(str,container,sizeof(container));
             if (pm[i]==0)
             {
-                
+                str[i]='X';
+                auto a=possible_moves();
+                for (int z = 0; z < 9; z++)
+                    {
+                        if (a[z]=1)
+                        {
+                            single_threat[j++]=z;
+                        }
+                        else if (a[z]>1)
+                        {
+                            double_threat[k++]=z;
+                        }
+                    }
+                str[i]=(char)NULL;               
             }            
-        }
-        
+         }
+        return (k!=0)?double_threat[0]:single_threat[0];
     }
     else return (k!=0)?double_threat[0]:single_threat[0];        
 }

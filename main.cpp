@@ -23,5 +23,7 @@ int main()
     auto pm = g.possible_moves();
     for (int i = 0; i < 9; i++)
         cout << pm[i] << endl;
+    int t=g.best_move();
+    cout<<"Best move is"<<g.best_move()<<endl;
     return 0;
 }
