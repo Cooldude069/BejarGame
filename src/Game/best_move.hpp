@@ -18,17 +18,20 @@ int Game::best_move()
     }
     if (flag==false)
     {
-        char str[9];
-        memmove(str,container,sizeof(container));
         for (int i = 0; i < 8; i++)
         {
             if (pm[i]==0)
             {
-                str[i]='X';
+                container[i]='X';
                 auto a=possible_moves();
+               /*  for (int j = 0; j < 9; j++)
+                {
+                    std::cout<<a[j]<<" ";
+                } */
+                
                 for (int z = 0; z < 9; z++)
                     {
-                        if (a[z]=1)
+                        if (a[z]==1)
                         {
                             single_threat[j++]=z;
                         }
@@ -37,7 +40,7 @@ int Game::best_move()
                             double_threat[k++]=z;
                         }
                     }
-                str[i]=(char)NULL;               
+                container[i]=(char)NULL;               
             }            
          }
         return (k!=0)?double_threat[0]:single_threat[0];
