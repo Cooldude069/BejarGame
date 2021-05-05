@@ -9,21 +9,26 @@ int main()
 {
     char *cont;
     cont = new char[9];
+    for (int i = 0; i < 9; i++)
+    {       
+        cont[i]=(char)NULL;
+    }
+    
     /*
-    |X| | |
-    |X|O| |
-    |O| |X|
+    | |O|X|
+    | |O| |
+    |X|X| |
     */
-    cont[0]='X';
-    cont[3]='X';
+    cont[6]='X';
     cont[4]='O';
-    cont[6]='O';
-    cont[8]='X';
+    cont[2]='X';
+    cont[1]='O';
+    cont[7]='X';
+
     Game g(cont);
     auto pm = g.possible_moves();
     for (int i = 0; i < 9; i++)
         cout << pm[i] << endl;
-    int t=g.best_move();
-    cout<<"Best move is"<<g.best_move()<<endl;
+    cout<<"Best move is "<<g.best_move()<<endl;
     return 0;
 }

@@ -18,32 +18,23 @@ int Game::best_move()
     }
     if (flag==false)
     {
-        for (int i = 0; i < 8; i++)
+        int sum=0;
+        for (int i = 0; i < 9; i++)
         {
-            if (pm[i]==0)
-            {
-                container[i]='X';
-                auto a=possible_moves();
-               /*  for (int j = 0; j < 9; j++)
-                {
-                    std::cout<<a[j]<<" ";
-                } */
-                
-                for (int z = 0; z < 9; z++)
-                    {
-                        if (a[z]==1)
-                        {
-                            single_threat[j++]=z;
-                        }
-                        else if (a[z]>1)
-                        {
-                            double_threat[k++]=z;
-                        }
-                    }
-                container[i]=(char)NULL;               
-            }            
-         }
-        return (k!=0)?double_threat[0]:single_threat[0];
+            sum+=pm[i];
+        }
+        if(sum==-1 && container[4]==(char)NULL)
+            return 4;
+        else if(sum==-1 && container[4]=='X')
+            return 6;
+        else if((container[0]=='X'&&container[8]=='X'&&sum==-3)||(container[2]=='X'&&container[6]=='X'&&sum==-3))
+            return 1;
+        else 
+        for (int i = 0; i < 9; i++)
+        {
+            if(container[i]==(char)NULL)
+                return i;
+        }      
     }
     else return (k!=0)?double_threat[0]:single_threat[0];        
 }
