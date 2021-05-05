@@ -2,23 +2,33 @@
 #include "src/Game/Game.hpp"
 #include "src/Game/take_input.hpp"
 #include "src/Game/possible_moves.hpp"
+#include "src/Game/best_move.hpp"
 using namespace std;
 
 int main()
 {
     char *cont;
     cont = new char[9];
+    for (int i = 0; i < 9; i++)
+    {       
+        cont[i]=(char)NULL;
+    }
+    
     /*
-    | | |X|
+    | |O|X|
     | |O| |
-    | | |X|
+    |X|X| |
     */
-    cont[2] = 'X';
-    cont[4] = 'O';
-    cont[8] = 'X';
+    cont[6]='X';
+    cont[4]='O';
+    cont[2]='X';
+    cont[1]='O';
+    cont[7]='X';
+
     Game g(cont);
     auto pm = g.possible_moves();
     for (int i = 0; i < 9; i++)
         cout << pm[i] << endl;
+    cout<<"Best move is "<<g.best_move()<<endl;
     return 0;
 }
